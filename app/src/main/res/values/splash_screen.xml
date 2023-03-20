@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.SplashScreenCustom" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/jet_black</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/discount</item>
+        <item name="postSplashScreenTheme">@style/Theme.TipTime</item>
+    </style>
+</resources>
