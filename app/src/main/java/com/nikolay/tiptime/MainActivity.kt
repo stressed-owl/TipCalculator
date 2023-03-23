@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -99,7 +100,8 @@ fun EditNumberField(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
             textColor = Color.White,
-            backgroundColor = Color(0xFF111111)
+            backgroundColor = Color(0xFF111111),
+            cursorColor = Color.LightGray,
         )
     )
 }
@@ -125,7 +127,7 @@ fun TipTimeScreen() {
         ) {
             Column(
                 modifier = Modifier.padding(32.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
@@ -150,6 +152,7 @@ fun TipTimeScreen() {
                         }
                     )
                 )
+                Spacer(modifier = Modifier.height(8.dp))
                 EditNumberField(
                     value = tipInput,
                     onValueChange = { tipInput = it },
@@ -164,6 +167,7 @@ fun TipTimeScreen() {
                         }
                     )
                 )
+                Spacer(modifier = Modifier.height(8.dp))
                 RoundTheTipRow(
                     roundUp = roundUp,
                     onRoundUpChanged = { roundUp = it }
@@ -189,7 +193,8 @@ fun Preview() {
     }
 }
 
-private fun calculateTip(
+@VisibleForTesting
+internal fun calculateTip(
     amount: Double,
     tipPercent: Double,
     roundUp: Boolean
